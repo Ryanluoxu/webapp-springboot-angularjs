@@ -1,0 +1,41 @@
+<div class="jumbotron text-center">
+	<h2>Operation Trail</h2>
+	<br>
+
+	<!-- table -->
+	<div>
+		<div>
+			Search: <input type="text" ng-model="searchText">
+		</div>
+		<br>
+		<div class="form-check" ng-click="filterData()">
+		Filter: &emsp;
+			<label class="checkbox-inline"><input type="checkbox" ng-model="filterByAdd">Add</label>&emsp;
+			<label class="checkbox-inline"><input type="checkbox" ng-model="filterByUpdate">Update</label>&emsp;
+			<label class="checkbox-inline"><input type="checkbox" ng-model="filterByDelete">Delete</label>
+		</div>
+		<br>
+		<!-- TABLE -->
+		<div class="container">
+			<table class="table table-responsive-md table-striped table-bordered table-hover">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Date Time</th>
+						<th scope="col">User</th>
+						<th scope="col">Action Type</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody class="table-light">
+					<tr ng-repeat="auditTrailVO in auditTrailVOs | filter : searchText">
+						<td scope="row">{{auditTrailVO.createdDate}}</td>
+                        <td>{{auditTrailVO.userName}}</td>
+                        <td>{{auditTrailVO.actionType}}</td>
+                        <td>{{auditTrailVO.action}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div> <!-- table -->
+
+</div>

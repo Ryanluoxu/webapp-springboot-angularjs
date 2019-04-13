@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+
+<meta charset="ISO-8859-1">
+<title>Customer Manager</title>
+
+<!-- load bootstrap and fontawesome via CDN -->
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+<link rel="stylesheet" href="/css/app/app.css">
+
+<!-- load angular and angular route via CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+
+
+</head>
+<body ng-controller="mainController">
+
+	<!-- HEADER AND NAVBAR -->
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container">
+
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">Customer Manager</a>
+				</div>
+				
+				<div class="nav navbar-nav navbar-center">
+					<a href="/#/admin" ng-show="loginUser.role=='ADMIN'">
+						<button class="btn btn-info">Admin Office</button>
+					</a>
+					<a href="/#/user" ng-show="loginUser.role=='USER'">
+						<button class="btn btn-info">User Office</button>
+					</a>
+				</div>
+
+				<div class="nav navbar-nav navbar-right" ng-show="loginUser.role!='ANONYMOUS'">
+					<a href="/logout">
+						<button class="btn btn-warning">Logout</button>
+					</a>
+				</div>
+
+			</div>
+		</nav>
+	</header>
+
+	<!-- MAIN CONTENT AND INJECTED VIEWS -->
+	<div id="main">
+		<!-- this is where content will be injected -->
+		<div ng-view></div>
+	</div>
+
+	<!-- FOOTER -->
+	<footer class = "container">
+		<small>&copy; Copyright 2019, <a href="http://ryanluoxu.github.io" target="_blank">RyanLuoXu</a>. All Rights Reserved.</small>
+	</footer>
+
+	<script src="app.js"></script>
+	<script src="js/controller/main.controller.js"></script>
+	<script src="js/controller/user.controller.js"></script>
+	<script src="js/controller/admin.controller.js"></script>
+	<script src="js/controller/customer.info.controller.js"></script>
+	<script src="js/controller/company.info.controller.js"></script>
+	<script src="js/controller/product.info.controller.js"></script>
+	<script src="js/controller/order.info.controller.js"></script>
+	<script src="js/controller/user.info.controller.js"></script>
+	<script src="js/controller/audit.trail.controller.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<div class="jumbotron text-center">
+	<h2>Order Management</h2>
+	<br>
+
+	<!-- orderInfo table -->
+	<div>
+		<div>
+			Search: <input type="text" ng-model="searchText">
+			<button class="btn btn-primary" ng-click="goToOrderInfoAdd()">Add Order</button>
+		</div>
+		<br>
+		<!-- TABLE -->
+		<div class="container">
+			<table class="table table-striped table-bordered table-hover">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Customer</th>
+						<th scope="col">Product</th>
+						<th scope="col">Payment Mode</th>
+						<th scope="col">Unit Price</th>
+						<th scope="col">Quantity</th>
+						<th scope="col">Profit</th>
+						<th scope="col">Created By</th>
+						<th scope="col">Created Date</th>
+						<th scope="col">Updated By</th>
+						<th scope="col">Updated Date</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody class="table-light">
+					<tr ng-repeat="orderInfoVO in orderInfoVOs | filter : searchText">
+						<td scope="row">{{orderInfoVO.orderInfoId}}</td>
+                        <td>{{orderInfoVO.customerName}}</td>
+                        <td>{{orderInfoVO.productName}}</td>
+                        <td>{{orderInfoVO.paymentMode}}</td>
+                        <td>{{orderInfoVO.unitPrice}}</td>
+                        <td>{{orderInfoVO.quantity}}</td>
+                        <td>{{orderInfoVO.profit}}</td>
+						<td>{{orderInfoVO.createdBy}}</td>
+                        <td>{{orderInfoVO.createdDate}}</td>
+                        <td>{{orderInfoVO.updatedBy}}</td>
+                        <td>{{orderInfoVO.updatedDate}}</td>
+                        <td><button class="btn btn-primary" ng-click="editOrderInfo(orderInfoVO)">Edit</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div> <!-- orderInfo table -->
+
+</div>
