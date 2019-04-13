@@ -25,14 +25,14 @@ public class ProductInfoServiceImpl implements ProductInfoService {
 		productInfo.setCreatedDate(new Date());
 		productInfo.setCreatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
 		productInfo.setStatus(StatusConstant.ACTIVE);
-		return productInfoDao.add(productInfo);
+		return productInfoDao.addOrUpdate(productInfo);
 	}
 
 	@Override
 	public ProductInfo update(ProductInfo productInfo) {
 		productInfo.setUpdatedDate(new Date());
 		productInfo.setUpdatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
-		return productInfoDao.update(productInfo);
+		return productInfoDao.addOrUpdate(productInfo);
 	}
 
 	@Override

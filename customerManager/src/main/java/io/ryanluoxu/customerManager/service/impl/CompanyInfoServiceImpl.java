@@ -25,14 +25,14 @@ public class CompanyInfoServiceImpl implements CompanyInfoService {
 		companyInfo.setCreatedDate(new Date());
 		companyInfo.setCreatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
 		companyInfo.setStatus(StatusConstant.ACTIVE);
-		return companyInfoDao.add(companyInfo);
+		return companyInfoDao.addOrUpdate(companyInfo);
 	}
 
 	@Override
 	public CompanyInfo update(CompanyInfo companyInfo) {
 		companyInfo.setUpdatedDate(new Date());
 		companyInfo.setUpdatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
-		return companyInfoDao.update(companyInfo);
+		return companyInfoDao.addOrUpdate(companyInfo);
 	}
 
 	@Override

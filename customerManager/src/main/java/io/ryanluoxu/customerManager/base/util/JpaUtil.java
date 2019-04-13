@@ -1,11 +1,14 @@
 package io.ryanluoxu.customerManager.base.util;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+//import javax.persistence.EntityManager;
+//import javax.persistence.EntityManagerFactory;
+//import javax.persistence.Persistence;
 
 public class JpaUtil {
-	
+
+	/**
+	 * ExceptionInInitializerError
+	 * 
 	private static EntityManagerFactory emFactory;
 
 	static{
@@ -19,5 +22,6 @@ public class JpaUtil {
 	public static void main(String[] args) {
 		createEntityManager();
 	}
+	 */
 
 }

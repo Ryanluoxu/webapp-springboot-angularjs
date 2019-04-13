@@ -31,7 +31,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Override
 	public UserInfo update(UserInfo userInfo) {
-		return userInfoDao.update(userInfo);
+		return userInfoDao.addOrUpdate(userInfo);
 	}
 
 	@Override

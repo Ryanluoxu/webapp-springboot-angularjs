@@ -66,5 +66,11 @@ public class UserInfoDaoImpl extends GenericDaoImpl<UserInfo, Long> implements U
 		return CollectionUtils.isEmpty(userInfos)? null : userInfos.get(0);
 	}
 
+	@Override
+	public UserInfo deleteById(Long userInfoId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

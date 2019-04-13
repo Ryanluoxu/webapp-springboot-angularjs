@@ -3,8 +3,6 @@ package io.ryanluoxu.customerManager.dao.impl;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -17,7 +15,6 @@ import org.springframework.util.CollectionUtils;
 
 import io.ryanluoxu.customerManager.base.constant.CompanyInfoConstant;
 import io.ryanluoxu.customerManager.base.util.ClassUtil;
-import io.ryanluoxu.customerManager.base.util.JpaUtil;
 import io.ryanluoxu.customerManager.bean.input.QueryInput;
 import io.ryanluoxu.customerManager.dao.GenericDao;
 
@@ -77,37 +74,14 @@ public class GenericDaoImpl<T, ID extends Serializable> implements GenericDao<T,
 	}
 	
 
+	/**
+	 * 
 	@Override
 	public T add(T t) {
 		EntityManager em = JpaUtil.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		em.persist(t);
-		tx.commit();
-		em.close();
-		return t;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<T> findAll() {
-		EntityManager em = JpaUtil.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		Query query  = em.createQuery("select t from " + targetClass.getName() + " t");
-		List<T> list = query.getResultList();
-		tx.commit();
-		em.close();
-		return list;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public T getById(ID id) {
-		EntityManager em = JpaUtil.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		T t = (T) em.find(targetClass, id);
 		tx.commit();
 		em.close();
 		return t;
@@ -123,18 +97,22 @@ public class GenericDaoImpl<T, ID extends Serializable> implements GenericDao<T,
 		em.close();
 		return t;
 	}
-
+	
+	 */
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public T deleteById(ID id) {
-		EntityManager em = JpaUtil.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		T t = (T) em.find(targetClass, id);
-		em.remove(t);
-		tx.commit();
-		em.close();
+		T t = (T) getSession().load(targetClass, id);
+		getSession().delete(t);
 		return t;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findAll() {
+		Query query  = getSession().createQuery("select t from " + targetClass.getName() + " t");
+		return query.getResultList();
 	}
 
 	@Override
@@ -147,6 +125,12 @@ public class GenericDaoImpl<T, ID extends Serializable> implements GenericDao<T,
 	public T addOrUpdate(T t) {
 		getSession().saveOrUpdate(t);
 		return t;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public T getById(ID id) {
+		return (T) getSession().load(targetClass, id);
 	}
 
 }

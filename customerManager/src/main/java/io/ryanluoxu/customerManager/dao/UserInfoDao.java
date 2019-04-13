@@ -11,5 +11,7 @@ public interface UserInfoDao extends GenericDao<UserInfo, Long>{
 	List<UserInfo> findByUserName(String userName);
 
 	UserInfo get(String userName, String status);
+
+	UserInfo deleteById(Long userInfoId);
  
 }

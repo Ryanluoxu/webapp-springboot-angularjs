@@ -25,14 +25,14 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 		orderInfo.setCreatedDate(new Date());
 		orderInfo.setCreatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
 		orderInfo.setStatus(StatusConstant.ACTIVE);
-		return orderInfoDao.add(orderInfo);
+		return orderInfoDao.addOrUpdate(orderInfo);
 	}
 
 	@Override
 	public OrderInfo update(OrderInfo orderInfo) {
 		orderInfo.setUpdatedDate(new Date());
 		orderInfo.setUpdatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
-		return orderInfoDao.update(orderInfo);
+		return orderInfoDao.addOrUpdate(orderInfo);
 	}
 
 	@Override

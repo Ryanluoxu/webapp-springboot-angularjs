@@ -25,14 +25,14 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
 		customerInfo.setCreatedDate(new Date());
 		customerInfo.setCreatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
 		customerInfo.setStatus(CustomerInfoConstant.STATUS_ACTIVE);
-		return customerInfoDao.add(customerInfo);
+		return customerInfoDao.addOrUpdate(customerInfo);
 	}
 
 	@Override
 	public CustomerInfo update(CustomerInfo customerInfo) {
 		customerInfo.setUpdatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
 		customerInfo.setUpdatedDate(new Date());
-		return customerInfoDao.update(customerInfo);
+		return customerInfoDao.addOrUpdate(customerInfo);
 	}
 
 	@Override
