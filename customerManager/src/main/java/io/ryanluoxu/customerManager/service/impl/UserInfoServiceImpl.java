@@ -25,7 +25,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 		userInfo.setCreatedDate(new Date());
 		userInfo.setStatus(StatusConstant.ACTIVE);
 		userInfo.setRole(RoleConstant.USER);
-		return userInfoDao.add(userInfo);
+		return userInfoDao.addOrUpdate(userInfo);
+//		return userInfoDao.add(userInfo);	// exception when running in Heroku
 	}
 
 	@Override

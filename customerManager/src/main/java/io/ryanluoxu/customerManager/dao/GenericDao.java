@@ -5,9 +5,15 @@ import java.util.List;
 
 public interface GenericDao<T, ID extends Serializable> {
 	/**
-	 * Add
+	 * use JpaUtil
 	 */
 	T add(T t);
+	/**
+	 * use SessionFactory
+	 * @param t
+	 * @return
+	 */
+	T addOrUpdate(T t);
 	
 	/**
 	 * Find

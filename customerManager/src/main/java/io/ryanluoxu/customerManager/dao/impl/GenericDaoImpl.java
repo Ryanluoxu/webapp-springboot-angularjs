@@ -143,4 +143,10 @@ public class GenericDaoImpl<T, ID extends Serializable> implements GenericDao<T,
 		return getSession().createQuery(criteriaQuery).getResultList();		
 	}
 
+	@Override
+	public T addOrUpdate(T t) {
+		getSession().saveOrUpdate(t);
+		return t;
+	}
+
 }

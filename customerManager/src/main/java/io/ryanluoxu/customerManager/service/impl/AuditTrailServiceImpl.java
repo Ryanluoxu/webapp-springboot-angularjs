@@ -22,7 +22,8 @@ public class AuditTrailServiceImpl implements AuditTrailService {
 	@Override
 	public AuditTrail add(AuditTrail auditTrail) {
 		auditTrail.setCreatedDate(new Date());
-		return auditTrailDao.add(auditTrail);
+//		return auditTrailDao.add(auditTrail);
+		return auditTrailDao.addOrUpdate(auditTrail);
 	}
 
 	@Override

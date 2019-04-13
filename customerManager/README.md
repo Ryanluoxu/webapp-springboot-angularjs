@@ -1,6 +1,6 @@
 
 # DB
-cd /d h:\PostgreSQL\pg11\bin>
+cd /d H:\PostgreSQL11\pg11\bin
 psql -U postgres
 jr
 create database customermanager;
